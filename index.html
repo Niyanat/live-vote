@@ -265,66 +265,63 @@
             </div>
         </header>
 
-        <!-- พื้นที่แจ้งเตือนคนกำลังสแกนโหวตแบบ Real-time (ลอยมุมขวาบน) -->
-        <div id="live-toast-container" class="fixed top-20 right-4 z-40 flex flex-col gap-2 pointer-events-none max-w-xs w-full"></div>
-
         <!-- เนื้อหาหลัก -->
-        <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col">
+        <main id="main-container" class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col transition-all duration-300">
 
             <!-- ****************************************** -->
             <!-- แท็บ 1: หน้าตั้งค่า & QR Code แบบถาวร -->
             <!-- ****************************************** -->
             <section id="section-setup" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                <!-- ฝั่งซ้าย: ตั้งค่าชื่อรายการ, เวลา, กติกา และรายชื่อทีม (7 คอลัมน์) -->
+                <!-- ฝั่งซ้าย: ตั้งค่าชื่อรายการและรายชื่อผู้เข้าแข่งขัน (7 คอลัมน์) -->
                 <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
-                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
                         <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i data-lucide="sliders" class="w-5 h-5 text-indigo-400"></i>
-                            <span>ตั้งค่าการแข่งขัน & รายชื่อทีม</span>
+                            <i data-lucide="settings-2" class="w-5 h-5 text-indigo-400"></i> ตั้งค่าการแข่งขัน
                         </h2>
-                        <button type="button" onclick="confirmResetScores()" class="px-3.5 py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 text-xs font-semibold transition flex items-center gap-1.5">
+                        <button type="button" onclick="confirmResetScores()" class="text-xs px-3 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition flex items-center gap-1.5">
                             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> ล้างคะแนนเริ่มใหม่
                         </button>
                     </div>
 
-                    <!-- ชื่องาน / หัวข้อกิจกรรม -->
+                    <!-- ตั้งชื่อกิจกรรม -->
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2">ชื่องาน / หัวข้อการประกวด</label>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">ชื่อรายการ / หัวข้อการโหวต</label>
                         <div class="flex gap-2">
-                            <input type="text" id="event-title-input" oninput="handleTitleInput(this.value)" placeholder="เช่น การประกวดขวัญใจมหาชน 2026"
-                                class="flex-1 px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-indigo-500 text-white text-sm font-semibold focus:outline-none">
-                            <button type="button" onclick="saveEventTitle()" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition shrink-0 shadow-lg shadow-indigo-500/25">
+                            <input type="text" id="event-title-input" value="การประกวดขวัญใจมหาชน 2026"
+                                oninput="handleTitleInput(this.value)"
+                                class="flex-1 px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-indigo-500 text-white text-sm focus:outline-none">
+                            <button type="button" onclick="saveEventTitle()" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition shrink-0">
                                 บันทึกชื่อ
                             </button>
                         </div>
                     </div>
 
-                    <!-- ตั้งเวลาแข่งขัน & กติกาการโหวต -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                            <label class="block text-xs font-semibold text-slate-400 mb-2.5">ระยะเวลาแข่งขัน</label>
-                            <div class="grid grid-cols-4 gap-1.5">
+                    <!-- ตั้งเวลาแข่งขัน & กติกาโหวต -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-2">ระยะเวลาแข่งขัน</label>
+                            <div class="grid grid-cols-4 gap-1.5" id="duration-selector">
                                 <button type="button" onclick="setRaceDuration(30)" data-dur="30" class="dur-btn py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">30 วิ</button>
                                 <button type="button" onclick="setRaceDuration(60)" data-dur="60" class="dur-btn py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow transition">1 นาที</button>
                                 <button type="button" onclick="setRaceDuration(120)" data-dur="120" class="dur-btn py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">2 นาที</button>
                                 <button type="button" onclick="setRaceDuration(180)" data-dur="180" class="dur-btn py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">3 นาที</button>
                             </div>
                         </div>
-
-                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                            <label class="block text-xs font-semibold text-slate-400 mb-2.5">กติกาการกดโหวตบนมือถือ</label>
-                            <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-2">กติกาการกดโหวตบนมือถือ</label>
+                            <div class="grid grid-cols-2 gap-1.5">
                                 <button type="button" id="vmode-once" onclick="setVoteMode('once')" class="py-2 px-2 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow transition">คนละ 1 ครั้ง</button>
                                 <button type="button" id="vmode-multi" onclick="setVoteMode('multi')" class="py-2 px-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">กดรัวส่งพลังได้</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- เพิ่มผู้เข้าแข่งขันใหม่ -->
-                    <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-                        <label class="block text-xs font-semibold text-slate-300 mb-2.5">เพิ่มทีม / ผู้เข้าแข่งขันใหม่</label>
-                        <div class="flex flex-wrap sm:flex-nowrap gap-2">
-                            <select id="new-candidate-avatar" class="px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xl focus:outline-none focus:border-indigo-500 cursor-pointer">
+                    <!-- เพิ่มผู้เข้าแข่งขัน -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">เพิ่มผู้เข้าแข่งขัน / ทีม (แนะนำ 3 คนขึ้นไป)</label>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <select id="new-candidate-avatar" title="เลือกตัวละคร"
+                                class="px-3 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-indigo-500 text-white text-xl focus:outline-none cursor-pointer">
                                 <option value="🦊">🦊</option>
                                 <option value="🐰">🐰</option>
                                 <option value="🐼">🐼</option>
@@ -338,11 +335,13 @@
                                 <option value="🐧">🐧</option>
                                 <option value="🦖">🦖</option>
                             </select>
-                            <input type="text" id="new-candidate-name" placeholder="ชื่อทีม เช่น ทีมที่ 5"
-                                class="flex-1 min-w-[140px] px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 focus:border-indigo-500 text-white text-sm focus:outline-none">
-                            <input type="text" id="new-candidate-desc" placeholder="คำโปรย / หมายเลข"
-                                class="w-full sm:w-36 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 focus:border-indigo-500 text-white text-sm focus:outline-none">
-                            <button type="button" onclick="addCandidate()" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold transition flex items-center justify-center gap-1 shrink-0 shadow-lg shadow-emerald-500/20">
+                            <input type="text" id="new-candidate-name" placeholder="ชื่อทีม หรือ ชื่อผู้เข้าแข่งขัน..."
+                                onkeypress="if(event.key==='Enter') addCandidate()"
+                                class="flex-1 px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-indigo-500 text-white text-sm focus:outline-none">
+                            <input type="text" id="new-candidate-desc" placeholder="หมายเลข / คำโปรย..."
+                                onkeypress="if(event.key==='Enter') addCandidate()"
+                                class="sm:w-40 px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-indigo-500 text-white text-sm focus:outline-none">
+                            <button type="button" onclick="addCandidate()" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition flex items-center justify-center gap-1.5 shrink-0 shadow-lg shadow-emerald-500/20">
                                 <i data-lucide="plus" class="w-4 h-4"></i> เพิ่ม
                             </button>
                         </div>
@@ -350,47 +349,50 @@
 
                     <!-- รายชื่อผู้เข้าแข่งขันทั้งหมด (แก้ไขชื่อ/ตัวละครได้ทันที) -->
                     <div>
-                        <div class="flex items-center justify-between mb-2.5">
-                            <span class="text-sm font-semibold text-slate-300">รายชื่อทีมทั้งหมด (<span id="candidate-count">0</span>)</span>
-                            <span class="text-xs text-slate-500">พิมพ์แก้ไขชื่อหรือเปลี่ยนตัวละครได้ทันที</span>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm font-medium text-slate-300">รายชื่อผู้เข้าแข่งขันทั้งหมด (<span id="candidate-count">0</span>)</span>
+                            <span class="text-xs text-slate-400">คลิกแก้ไขชื่อหรือตัวละครได้ทันที</span>
                         </div>
                         <div id="setup-candidates-list" class="space-y-2.5 max-h-[340px] overflow-y-auto pr-1">
-                            <!-- รายการทีมจะถูกสร้างด้วย JS -->
+                            <!-- รายการจะถูกสร้างด้วย JS -->
                         </div>
                     </div>
                 </div>
 
-                <!-- ฝั่งขวา: QR Code ถาวร (5 คอลัมน์) -->
-                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 flex flex-col items-center text-center relative overflow-hidden">
-                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-3">
+                <!-- ฝั่งขวา: QR Code แบบไม่หมดอายุ (5 คอลัมน์) -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emerald-400 via-indigo-500 to-purple-500"></div>
+                    
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 mb-3">
                         <i data-lucide="infinity" class="w-3.5 h-3.5"></i> PERMANENT QR CODE (ไม่มีวันหมดอายุ)
-                    </span>
-                    <h3 class="text-xl font-bold text-white mb-1">สแกนเพื่อเข้าร่วมโหวต</h3>
-                    <p class="text-xs text-slate-400 mb-5">สามารถบันทึกรูป QR ไปพิมพ์ติดป้ายหรือขึ้นจอได้ตลอดงาน</p>
+                    </div>
+                    <h2 class="text-xl font-bold text-white mb-1">สแกนเพื่อเข้าร่วมโหวต</h2>
+                    <p class="text-xs text-slate-400 mb-6">QR Code นี้ผูกกับห้องแข่งถาวร สามารถพิมพ์ติดป้ายหรือขึ้นจอได้ตลอดงาน</p>
 
-                    <div class="bg-white p-5 rounded-3xl shadow-2xl border-4 border-indigo-500/20 mb-5">
+                    <!-- กล่องแสดง QR Code -->
+                    <div class="bg-white p-5 rounded-3xl inline-block shadow-2xl shadow-indigo-500/20 mx-auto mb-5 border-4 border-indigo-500/20">
                         <div id="qrcode-container" class="flex items-center justify-center"></div>
                     </div>
 
-                    <div class="w-full flex items-center gap-2 bg-slate-950/90 border border-slate-800 rounded-xl p-1.5 mb-4">
-                        <input type="text" id="share-url-input" readonly class="flex-1 bg-transparent text-xs text-slate-400 px-2 focus:outline-none truncate font-mono">
-                        <button type="button" onclick="copyShareUrl()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white transition shrink-0 flex items-center gap-1">
-                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> คัดลอก
+                    <!-- ช่องแสดงลิงก์ถาวร -->
+                    <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-2.5 flex items-center gap-2 mb-5">
+                        <input type="text" id="share-url-input" readonly class="bg-transparent text-xs text-slate-400 flex-1 focus:outline-none truncate px-2">
+                        <button type="button" onclick="copyShareUrl()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-white transition flex items-center gap-1 shrink-0">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> คัดลอกลิงก์
                         </button>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-2.5 w-full mb-3">
-                        <button type="button" onclick="downloadQRCode()" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition flex items-center justify-center gap-1.5">
-                            <i data-lucide="download" class="w-4 h-4"></i> บันทึกรูป QR
+                    <!-- ปุ่มจัดการ QR -->
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <button type="button" onclick="downloadQRCode()" class="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 border border-slate-700">
+                            <i data-lucide="download" class="w-4 h-4 text-indigo-400"></i> บันทึกรูป QR
                         </button>
-                        <button type="button" onclick="openVoterPreview()" class="py-2.5 px-3 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold transition flex items-center justify-center gap-1.5">
+                        <button type="button" onclick="openVoterPreview()" class="py-3 px-4 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 text-xs sm:text-sm font-semibold transition flex items-center justify-center gap-2 border border-indigo-500/30">
                             <i data-lucide="smartphone" class="w-4 h-4"></i> ทดลองหน้าจอมือถือ
                         </button>
                     </div>
 
-                    <button type="button" onclick="setHostTab('live')" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 hover:from-pink-400 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-indigo-500/25 transition flex items-center justify-center gap-2">
+                    <button type="button" onclick="setHostTab('live')" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-sm shadow-lg shadow-indigo-500/30 transition flex items-center justify-center gap-2">
                         <span>เข้าสู่หน้าจอแข่งขันสด (Live Race)</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
@@ -398,91 +400,123 @@
             </section>
 
             <!-- ****************************************** -->
-            <!-- แท็บ 2: หน้าจอแข่งขันสด (จัดวางเต็มความกว้างหน้าจอ: บน ชื่องาน + QR ใหญ่ + เริ่มแข่ง/นับเวลาถอยหลัง | ล่าง ทีมที่แข่งเต็มจอ) -->
+            <!-- แท็บ 2: หน้าจอแข่งขันสด (ซ้าย: รายชื่อทีมเต็มชัดๆ | ขวา: ชื่องาน + QR ยักษ์ + เริ่มแข่ง/นับเวลาถอยหลัง + กราฟทีมที่แข่ง) -->
             <!-- ****************************************** -->
             <section id="section-live" class="hidden flex-1 flex flex-col">
-                <div class="glass-panel rounded-3xl p-4 sm:p-6 flex-1 flex flex-col relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 flex-1 items-stretch">
                     
-                    <!-- พื้นที่หลักเต็มความกว้าง 100% -->
-                    <div class="flex flex-col justify-between gap-4 flex-1">
-                        
-                        <!-- 1. ด้านบนสุด: กล่อง "ชื่องาน" -->
-                        <div class="bg-slate-950/75 border border-white/10 rounded-2xl px-5 py-3 flex flex-wrap items-center justify-between gap-2 shadow-lg">
-                            <div class="flex items-center gap-3 min-w-0">
-                                <span id="live-status-pill" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 shrink-0">
-                                    <span class="w-2 h-2 rounded-full bg-amber-400"></span> รอกดปุ่มเริ่มแข่งขัน
-                                </span>
-                                <h2 id="live-event-title" class="text-xl sm:text-3xl font-extrabold text-white tracking-tight truncate">การประกวดขวัญใจมหาชน</h2>
+                    <!-- พื้นที่ฝั่งซ้าย: แผงรายชื่อทีมแบบเต็ม + แจ้งเตือนคะแนนเข้าสด (3 คอลัมน์) -->
+                    <div class="lg:col-span-3 glass-panel rounded-3xl p-4 sm:p-5 flex flex-col justify-between min-h-[calc(100vh-110px)]">
+                        <div class="flex flex-col min-h-0 flex-1">
+                            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10 shrink-0">
+                                <h3 class="font-extrabold text-white text-base sm:text-lg flex items-center gap-2">
+                                    <i data-lucide="list-ordered" class="w-5 h-5 text-amber-400"></i>
+                                    <span>รายชื่อทีมทั้งหมด</span>
+                                </h3>
+                                <span id="roster-team-count" class="px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold">0 ทีม</span>
                             </div>
-                            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 shrink-0">
-                                <i data-lucide="users" class="w-3.5 h-3.5"></i> คะแนนรวม: <strong id="total-votes-display" class="text-white text-sm">0</strong>
+                            <div id="live-full-team-roster" class="flex-1 overflow-y-auto space-y-2.5 pr-1">
+                                <!-- รายชื่อทีมแบบเต็มพร้อมตัวละครและคำโปรยจะถูกสร้างตรงนี้ -->
                             </div>
                         </div>
 
-                        <!-- 2. แถวกลางตามแบบร่าง: [ซ้าย: เริ่มแข่งขัน + Reset] + [กลาง: QR Code ยักษ์เด่นสุด] + [ขวา: นับเวลาถอยหลัง] -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
-                            
-                            <!-- กล่องซ้าย: ปุ่ม "เริ่มแข่งขัน" ด้านบน + ปุ่ม "Reset" ด้านล่าง (3 คอลัมน์) -->
-                            <div class="md:col-span-3 flex flex-col justify-between gap-3">
-                                <button id="start-race-btn" onclick="startRace()" class="flex-1 py-4 px-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-lg sm:text-xl shadow-xl shadow-emerald-500/30 transition transform hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-1 text-center">
-                                    <div class="flex items-center gap-1.5">
-                                        <i data-lucide="play" class="w-6 h-6 fill-slate-950"></i>
-                                        <span>เริ่มแข่งขัน</span>
-                                    </div>
-                                    <span id="start-btn-subtext" class="text-xs font-bold opacity-85">(1 นาที)</span>
-                                </button>
-
-                                <div class="flex flex-col gap-2">
-                                    <button type="button" onclick="confirmResetScores()" class="w-full py-3.5 px-4 rounded-2xl bg-slate-900/95 hover:bg-rose-950/70 text-slate-200 hover:text-rose-200 border border-slate-700 hover:border-rose-500/50 text-sm sm:text-base font-extrabold transition flex items-center justify-center gap-2 shadow-lg">
-                                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-                                        <span>Reset</span>
-                                    </button>
-                                    <div class="grid grid-cols-2 gap-1.5">
-                                        <button type="button" onclick="simulateRandomVote()" class="py-2 px-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ทดสอบกดโหวต +1">
-                                            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
-                                            <span>+1 ทดสอบ</span>
-                                        </button>
-                                        <button type="button" onclick="finishAndShowPodium()" class="py-2 px-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ประกาศผล 1-2-3 ทันที">
-                                            <i data-lucide="flag" class="w-3.5 h-3.5"></i>
-                                            <span>ประกาศผล</span>
-                                        </button>
-                                    </div>
+                        <!-- พื้นที่แจ้งเตือนคนกำลังสแกนโหวตสด (อยู่ด้านซ้ายล่าง ไม่บังเวลาถอยหลังด้านขวา) -->
+                        <div class="mt-4 pt-3 border-t border-white/10 shrink-0">
+                            <div class="flex items-center justify-between text-[11px] font-bold text-slate-400 mb-2">
+                                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> ความเคลื่อนไหวล่าสุด</span>
+                                <span>LIVE</span>
+                            </div>
+                            <div id="live-toast-container" class="flex flex-col gap-2 min-h-[58px] justify-end">
+                                <div class="rounded-2xl bg-slate-900/60 border border-slate-800/80 p-3 text-center text-xs text-slate-500">
+                                    รอรับคะแนนโหวตจากผู้ชม...
                                 </div>
                             </div>
-
-                            <!-- กล่องกลาง: QR Code ขนาดยักษ์เด่นชัดที่สุดสำหรับสแกนระยะไกลในห้าง (6 คอลัมน์) -->
-                            <div class="md:col-span-6 bg-gradient-to-b from-indigo-950/90 to-slate-950/95 border-2 border-amber-400/70 rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(251,191,36,0.25)] relative">
-                                <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-[0_0_45px_rgba(255,255,255,0.3)] border-4 border-amber-300">
-                                    <div id="live-big-qrcode" class="flex items-center justify-center"></div>
-                                </div>
-                                <div class="mt-3 flex flex-wrap items-center justify-center gap-2.5">
-                                    <span class="text-sm sm:text-base font-black text-amber-300 flex items-center gap-1.5 tracking-wide">
-                                        <i data-lucide="scan-line" class="w-5 h-5"></i> สแกน QR Code เพื่อโหวตสด!
-                                    </span>
-                                    <button type="button" onclick="downloadQRCode()" class="text-xs px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition inline-flex items-center gap-1">
-                                        <i data-lucide="download" class="w-3.5 h-3.5"></i> บันทึก QR
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- กล่องขวา: กล่อง "นับเวลาถอยหลัง" ขนาดใหญ่เต็มความสูง (3 คอลัมน์) -->
-                            <div class="md:col-span-3 bg-slate-950/90 border-2 border-indigo-500/40 rounded-3xl p-4 flex flex-col items-center justify-center text-center shadow-2xl relative overflow-hidden">
-                                <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-                                <div class="flex items-center justify-center gap-1.5 text-indigo-300 text-sm sm:text-base font-extrabold uppercase tracking-wider mb-1">
-                                    <i data-lucide="timer" class="w-5 h-5"></i>
-                                    <span>นับเวลาถอยหลัง</span>
-                                </div>
-                                <p id="race-timer-display" class="text-5xl sm:text-6xl font-black font-mono text-white tracking-wider my-2 leading-none">01:00</p>
-                            </div>
-
                         </div>
-
-                        <!-- 3. ด้านล่าง: พื้นที่กราฟเสาแนวตั้งของ "ทีมที่แข่ง" เรียงเคียงข้างกันเต็มความกว้าง -->
-                        <div id="live-race-container" class="flex-1 w-full min-h-[280px]">
-                            <!-- เสากราฟแนวตั้งของแต่ละทีมจะถูกสร้างตรงนี้ -->
-                        </div>
-
                     </div>
+
+                    <!-- พื้นที่ฝั่งขวา: เวทีแข่งขันหลัก (9 คอลัมน์) -->
+                    <div class="lg:col-span-9 glass-panel rounded-3xl p-4 sm:p-6 flex-1 flex flex-col relative overflow-hidden">
+                        <div class="flex flex-col justify-between gap-4 flex-1">
+                            
+                            <!-- 1. ด้านบนสุด: กล่อง "ชื่องาน" -->
+                            <div class="bg-slate-950/75 border border-white/10 rounded-2xl px-5 py-3 flex flex-wrap items-center justify-between gap-2 shadow-lg">
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <span id="live-status-pill" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 shrink-0">
+                                        <span class="w-2 h-2 rounded-full bg-amber-400"></span> รอกดปุ่มเริ่มแข่งขัน
+                                    </span>
+                                    <h2 id="live-event-title" class="text-xl sm:text-3xl font-extrabold text-white tracking-tight truncate">การประกวดขวัญใจมหาชน</h2>
+                                </div>
+                                <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 shrink-0">
+                                    <i data-lucide="users" class="w-3.5 h-3.5"></i> คะแนนรวม: <strong id="total-votes-display" class="text-white text-sm">0</strong>
+                                </div>
+                            </div>
+
+                            <!-- 2. แถวกลาง: [ซ้าย: เริ่มแข่งขัน + Reset] + [กลาง: QR Code ยักษ์เด่นสุด] + [ขวา: นับเวลาถอยหลัง] -->
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
+                                
+                                <!-- กล่องซ้าย: ปุ่ม "เริ่มแข่งขัน" ด้านบน + ปุ่ม "Reset" ด้านล่าง (3 คอลัมน์) -->
+                                <div class="md:col-span-3 flex flex-col justify-between gap-3">
+                                    <button id="start-race-btn" onclick="startRace()" class="flex-1 py-4 px-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-lg sm:text-xl shadow-xl shadow-emerald-500/30 transition transform hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-1 text-center">
+                                        <div class="flex items-center gap-1.5">
+                                            <i data-lucide="play" class="w-6 h-6 fill-slate-950"></i>
+                                            <span>เริ่มแข่งขัน</span>
+                                        </div>
+                                        <span id="start-btn-subtext" class="text-xs font-bold opacity-85">(1 นาที)</span>
+                                    </button>
+
+                                    <div class="flex flex-col gap-2">
+                                        <button type="button" onclick="confirmResetScores()" class="w-full py-3.5 px-4 rounded-2xl bg-slate-900/95 hover:bg-rose-950/70 text-slate-200 hover:text-rose-200 border border-slate-700 hover:border-rose-500/50 text-sm sm:text-base font-extrabold transition flex items-center justify-center gap-2 shadow-lg">
+                                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                                            <span>Reset</span>
+                                        </button>
+                                        <div class="grid grid-cols-2 gap-1.5">
+                                            <button type="button" onclick="simulateRandomVote()" class="py-2 px-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ทดสอบกดโหวต +1">
+                                                <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+                                                <span>+1 ทดสอบ</span>
+                                            </button>
+                                            <button type="button" onclick="finishAndShowPodium()" class="py-2 px-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ประกาศผล 1-2-3 ทันที">
+                                                <i data-lucide="flag" class="w-3.5 h-3.5"></i>
+                                                <span>ประกาศผล</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- กล่องกลาง: QR Code ขนาดยักษ์เด่นชัดที่สุดสำหรับสแกนระยะไกลในห้าง (6 คอลัมน์) -->
+                                <div class="md:col-span-6 bg-gradient-to-b from-indigo-950/90 to-slate-950/95 border-2 border-amber-400/70 rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(251,191,36,0.25)] relative">
+                                    <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-[0_0_45px_rgba(255,255,255,0.3)] border-4 border-amber-300">
+                                        <div id="live-big-qrcode" class="flex items-center justify-center"></div>
+                                    </div>
+                                    <div class="mt-3 flex flex-wrap items-center justify-center gap-2.5">
+                                        <span class="text-sm sm:text-base font-black text-amber-300 flex items-center gap-1.5 tracking-wide">
+                                            <i data-lucide="scan-line" class="w-5 h-5"></i> สแกน QR Code เพื่อโหวตสด!
+                                        </span>
+                                        <button type="button" onclick="downloadQRCode()" class="text-xs px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition inline-flex items-center gap-1">
+                                            <i data-lucide="download" class="w-3.5 h-3.5"></i> บันทึก QR
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- กล่องขวา: กล่อง "นับเวลาถอยหลัง" ขนาดใหญ่เต็มความสูง (3 คอลัมน์) -->
+                                <div class="md:col-span-3 bg-slate-950/90 border-2 border-indigo-500/40 rounded-3xl p-4 flex flex-col items-center justify-center text-center shadow-2xl relative overflow-hidden">
+                                    <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+                                    <div class="flex items-center justify-center gap-1.5 text-indigo-300 text-sm sm:text-base font-extrabold uppercase tracking-wider mb-1">
+                                        <i data-lucide="timer" class="w-5 h-5"></i>
+                                        <span>นับเวลาถอยหลัง</span>
+                                    </div>
+                                    <p id="race-timer-display" class="text-5xl sm:text-6xl font-black font-mono text-white tracking-wider my-2 leading-none">01:00</p>
+                                </div>
+
+                            </div>
+
+                            <!-- 3. ด้านล่าง: พื้นที่กราฟเสาแนวตั้งของ "ทีมที่แข่ง" เรียงเคียงข้างกันเต็มความกว้าง -->
+                            <div id="live-race-container" class="flex-1 w-full min-h-[280px]">
+                                <!-- เสากราฟแนวตั้งของแต่ละทีมจะถูกสร้างตรงนี้ -->
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -1272,7 +1306,56 @@
                 container.appendChild(col);
             });
 
+            renderFullTeamRoster(boostedCandidateId, rankMap);
             if (window.lucide) lucide.createIcons();
+        }
+
+        function renderFullTeamRoster(boostedCandidateId = null, rankMap = {}) {
+            const rosterEl = document.getElementById('live-full-team-roster');
+            const countEl = document.getElementById('roster-team-count');
+            if (!rosterEl) return;
+
+            if (countEl) countEl.textContent = `${appState.candidates.length} ทีม`;
+            rosterEl.innerHTML = '';
+
+            appState.candidates.forEach((c, idx) => {
+                const votes = c.votes || 0;
+                const rankIdx = rankMap[c.id] ?? idx;
+                const isBoosted = boostedCandidateId === c.id;
+
+                let rankTag = `<span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300">#${rankIdx + 1}</span>`;
+                if (rankIdx === 0 && votes > 0) {
+                    rankTag = `<span class="text-[11px] font-black px-2 py-0.5 rounded-md bg-amber-400 text-slate-950">🥇 #1</span>`;
+                } else if (rankIdx === 1 && votes > 0) {
+                    rankTag = `<span class="text-[11px] font-black px-2 py-0.5 rounded-md bg-slate-300 text-slate-950">🥈 #2</span>`;
+                } else if (rankIdx === 2 && votes > 0) {
+                    rankTag = `<span class="text-[11px] font-black px-2 py-0.5 rounded-md bg-orange-300 text-slate-950">🥉 #3</span>`;
+                }
+
+                const card = document.createElement('div');
+                card.className = `p-3 rounded-2xl border transition-all flex items-start gap-3 ${
+                    isBoosted
+                        ? 'bg-emerald-500/20 border-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.3)] scale-[1.01]'
+                        : (rankIdx === 0 && votes > 0
+                            ? 'bg-amber-500/10 border-amber-400/40'
+                            : 'bg-slate-900/85 border-slate-800')
+                }`;
+
+                card.innerHTML = `
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br ${c.color || BAR_COLORS[idx % BAR_COLORS.length]} flex items-center justify-center text-2xl shrink-0 shadow-md">
+                        ${c.avatar || '🦊'}
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center justify-between gap-1.5 mb-0.5">
+                            ${rankTag}
+                            <span class="text-xs font-extrabold ${isBoosted ? 'text-emerald-300' : 'text-amber-300'}">${votes.toLocaleString()} คะแนน</span>
+                        </div>
+                        <h4 class="font-extrabold text-white text-sm sm:text-base leading-snug break-words">${escapeHtml(c.name)}</h4>
+                        ${c.desc ? `<p class="text-xs text-slate-300/90 leading-snug break-words mt-0.5">${escapeHtml(c.desc)}</p>` : ''}
+                    </div>
+                `;
+                rosterEl.appendChild(card);
+            });
         }
 
         function renderLiveVoteFeed() {
@@ -1315,19 +1398,34 @@
             const container = document.getElementById('live-toast-container');
             if (!container || currentMode !== 'host') return;
 
+            // ล้างข้อความรอรับคะแนนเริ่มต้นออก
+            if (container.querySelector('.text-slate-500')) {
+                container.innerHTML = '';
+            }
+
+            // จำกัดแสดงสูงสุด 2 กล่องล่าสุดเพื่อไม่ให้ล้นหรือบังส่วนอื่น
+            while (container.children.length >= 2) {
+                container.firstElementChild.remove();
+            }
+
             const toast = document.createElement('div');
-            toast.className = 'vote-toast glass-panel border-l-4 border-emerald-400 rounded-2xl p-3.5 shadow-2xl flex items-center gap-3';
+            toast.className = 'vote-toast bg-emerald-950/80 border border-emerald-400/60 rounded-2xl p-2.5 shadow-lg flex items-center gap-2.5 transition-all';
             toast.innerHTML = `
-                <div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-2xl shrink-0">
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/20 flex items-center justify-center text-xl shrink-0">
                     ${avatar || '🎉'}
                 </div>
-                <div class="min-w-0">
-                    <p class="text-xs font-bold text-emerald-300">+1 คะแนน! มีคนกำลังสแกนโหวต</p>
-                    <p class="text-xs text-white truncate font-semibold">${escapeHtml(candidateName)}</p>
+                <div class="min-w-0 flex-1">
+                    <p class="text-[11px] font-bold text-emerald-300">+1 คะแนน! กำลังสแกนโหวต</p>
+                    <p class="text-xs text-white truncate font-extrabold">${escapeHtml(candidateName)}</p>
                 </div>
             `;
             container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3300);
+            setTimeout(() => {
+                toast.remove();
+                if (container.children.length === 0) {
+                    container.innerHTML = '<div class="rounded-2xl bg-slate-900/60 border border-slate-800/80 p-3 text-center text-xs text-slate-500">รอรับคะแนนโหวตจากผู้ชม...</div>';
+                }
+            }, 3000);
         }
 
         // ปุ่มจำลองโหวต (+1) สำหรับทดสอบ
@@ -1527,6 +1625,14 @@
         // ==========================================
         window.setHostTab = (tabName) => {
             currentHostTab = tabName;
+            const mainContainer = document.getElementById('main-container');
+            if (mainContainer) {
+                if (tabName === 'live') {
+                    mainContainer.className = 'flex-1 w-full px-4 sm:px-6 py-4 flex flex-col transition-all duration-300';
+                } else {
+                    mainContainer.className = 'flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col transition-all duration-300';
+                }
+            }
             ['setup', 'live', 'podium'].forEach(t => {
                 const sec = document.getElementById(`section-${t}`);
                 const btn = document.getElementById(`tab-${t}`);
