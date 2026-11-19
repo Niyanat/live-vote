@@ -406,28 +406,28 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 flex-1 items-stretch">
                     
                     <!-- พื้นที่ฝั่งซ้าย: แผงรายชื่อทีมแบบเต็ม + แจ้งเตือนคะแนนเข้าสด (3 คอลัมน์) -->
-                    <div class="lg:col-span-3 glass-panel rounded-3xl p-4 sm:p-5 flex flex-col justify-between min-h-[calc(100vh-110px)]">
+                    <div class="lg:col-span-3 glass-panel rounded-3xl p-3.5 sm:p-4 flex flex-col justify-between h-[calc(100vh-88px)] min-h-[580px]">
                         <div class="flex flex-col min-h-0 flex-1">
-                            <div class="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-white/10 shrink-0">
-                                <h3 class="font-extrabold text-white text-base sm:text-lg flex items-center gap-2">
-                                    <i data-lucide="list-ordered" class="w-5 h-5 text-amber-400"></i>
+                            <div class="flex items-center justify-between gap-2 pb-2 mb-2.5 border-b border-white/10 shrink-0">
+                                <h3 class="font-extrabold text-white text-sm sm:text-base flex items-center gap-1.5">
+                                    <i data-lucide="list-ordered" class="w-4 h-4 text-amber-400"></i>
                                     <span>รายชื่อทีมทั้งหมด</span>
                                 </h3>
-                                <span id="roster-team-count" class="px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold">0 ทีม</span>
+                                <span id="roster-team-count" class="px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[11px] font-bold">0 ทีม</span>
                             </div>
-                            <div id="live-full-team-roster" class="flex-1 overflow-y-auto space-y-2.5 pr-1">
+                            <div id="live-full-team-roster" class="flex-1 overflow-y-auto pr-0.5">
                                 <!-- รายชื่อทีมแบบเต็มพร้อมตัวละครและคำโปรยจะถูกสร้างตรงนี้ -->
                             </div>
                         </div>
 
                         <!-- พื้นที่แจ้งเตือนคนกำลังสแกนโหวตสด (อยู่ด้านซ้ายล่าง ไม่บังเวลาถอยหลังด้านขวา) -->
-                        <div class="mt-4 pt-3 border-t border-white/10 shrink-0">
-                            <div class="flex items-center justify-between text-[11px] font-bold text-slate-400 mb-2">
+                        <div class="mt-2.5 pt-2 border-t border-white/10 shrink-0">
+                            <div class="flex items-center justify-between text-[10px] font-bold text-slate-400 mb-1.5">
                                 <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> ความเคลื่อนไหวล่าสุด</span>
                                 <span>LIVE</span>
                             </div>
-                            <div id="live-toast-container" class="flex flex-col gap-2 min-h-[58px] justify-end">
-                                <div class="rounded-2xl bg-slate-900/60 border border-slate-800/80 p-3 text-center text-xs text-slate-500">
+                            <div id="live-toast-container" class="flex flex-col gap-1.5 min-h-[46px] justify-end">
+                                <div class="rounded-xl bg-slate-900/60 border border-slate-800/80 p-2 text-center text-[11px] text-slate-500">
                                     รอรับคะแนนโหวตจากผู้ชม...
                                 </div>
                             </div>
@@ -435,82 +435,82 @@
                     </div>
 
                     <!-- พื้นที่ฝั่งขวา: เวทีแข่งขันหลัก (9 คอลัมน์) -->
-                    <div class="lg:col-span-9 glass-panel rounded-3xl p-4 sm:p-6 flex-1 flex flex-col relative overflow-hidden">
-                        <div class="flex flex-col justify-between gap-4 flex-1">
+                    <div class="lg:col-span-9 glass-panel rounded-3xl p-3.5 sm:p-5 h-[calc(100vh-88px)] min-h-[580px] flex flex-col relative overflow-hidden">
+                        <div class="flex flex-col justify-between gap-3 flex-1 min-h-0">
                             
                             <!-- 1. ด้านบนสุด: กล่อง "ชื่องาน" -->
-                            <div class="bg-slate-950/75 border border-white/10 rounded-2xl px-5 py-3 flex flex-wrap items-center justify-between gap-2 shadow-lg">
-                                <div class="flex items-center gap-3 min-w-0">
-                                    <span id="live-status-pill" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 shrink-0">
+                            <div class="bg-slate-950/75 border border-white/10 rounded-2xl px-4 py-2 flex flex-wrap items-center justify-between gap-2 shadow-lg shrink-0">
+                                <div class="flex items-center gap-2.5 min-w-0">
+                                    <span id="live-status-pill" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 shrink-0">
                                         <span class="w-2 h-2 rounded-full bg-amber-400"></span> รอกดปุ่มเริ่มแข่งขัน
                                     </span>
-                                    <h2 id="live-event-title" class="text-xl sm:text-3xl font-extrabold text-white tracking-tight truncate">การประกวดขวัญใจมหาชน</h2>
+                                    <h2 id="live-event-title" class="text-lg sm:text-2xl font-extrabold text-white tracking-tight truncate">การประกวดขวัญใจมหาชน</h2>
                                 </div>
-                                <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 shrink-0">
+                                <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 shrink-0">
                                     <i data-lucide="users" class="w-3.5 h-3.5"></i> คะแนนรวม: <strong id="total-votes-display" class="text-white text-sm">0</strong>
                                 </div>
                             </div>
 
                             <!-- 2. แถวกลาง: [ซ้าย: เริ่มแข่งขัน + Reset] + [กลาง: QR Code ยักษ์เด่นสุด] + [ขวา: นับเวลาถอยหลัง] -->
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-stretch shrink-0">
                                 
                                 <!-- กล่องซ้าย: ปุ่ม "เริ่มแข่งขัน" ด้านบน + ปุ่ม "Reset" ด้านล่าง (3 คอลัมน์) -->
-                                <div class="md:col-span-3 flex flex-col justify-between gap-3">
-                                    <button id="start-race-btn" onclick="startRace()" class="flex-1 py-4 px-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-lg sm:text-xl shadow-xl shadow-emerald-500/30 transition transform hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-1 text-center">
+                                <div class="md:col-span-3 flex flex-col justify-between gap-2">
+                                    <button id="start-race-btn" onclick="startRace()" class="flex-1 py-2.5 px-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-base sm:text-lg shadow-xl shadow-emerald-500/30 transition transform hover:scale-[1.02] active:scale-95 flex flex-col items-center justify-center gap-0.5 text-center">
                                         <div class="flex items-center gap-1.5">
-                                            <i data-lucide="play" class="w-6 h-6 fill-slate-950"></i>
+                                            <i data-lucide="play" class="w-5 h-5 fill-slate-950"></i>
                                             <span>เริ่มแข่งขัน</span>
                                         </div>
-                                        <span id="start-btn-subtext" class="text-xs font-bold opacity-85">(1 นาที)</span>
+                                        <span id="start-btn-subtext" class="text-[11px] font-bold opacity-85">(1 นาที)</span>
                                     </button>
 
-                                    <div class="flex flex-col gap-2">
-                                        <button type="button" onclick="confirmResetScores()" class="w-full py-3.5 px-4 rounded-2xl bg-slate-900/95 hover:bg-rose-950/70 text-slate-200 hover:text-rose-200 border border-slate-700 hover:border-rose-500/50 text-sm sm:text-base font-extrabold transition flex items-center justify-center gap-2 shadow-lg">
-                                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                                    <div class="flex flex-col gap-1.5">
+                                        <button type="button" onclick="confirmResetScores()" class="w-full py-2 px-3 rounded-xl bg-slate-900/95 hover:bg-rose-950/70 text-slate-200 hover:text-rose-200 border border-slate-700 hover:border-rose-500/50 text-xs sm:text-sm font-extrabold transition flex items-center justify-center gap-1.5 shadow-lg">
+                                            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                                             <span>Reset</span>
                                         </button>
                                         <div class="grid grid-cols-2 gap-1.5">
-                                            <button type="button" onclick="simulateRandomVote()" class="py-2 px-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ทดสอบกดโหวต +1">
-                                                <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+                                            <button type="button" onclick="simulateRandomVote()" class="py-1.5 px-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ทดสอบกดโหวต +1">
+                                                <i data-lucide="zap" class="w-3 h-3 text-amber-400"></i>
                                                 <span>+1 ทดสอบ</span>
                                             </button>
-                                            <button type="button" onclick="finishAndShowPodium()" class="py-2 px-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ประกาศผล 1-2-3 ทันที">
-                                                <i data-lucide="flag" class="w-3.5 h-3.5"></i>
+                                            <button type="button" onclick="finishAndShowPodium()" class="py-1.5 px-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[11px] font-bold transition flex items-center justify-center gap-1" title="ประกาศผล 1-2-3 ทันที">
+                                                <i data-lucide="flag" class="w-3 h-3"></i>
                                                 <span>ประกาศผล</span>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- กล่องกลาง: QR Code ขนาดยักษ์เด่นชัดที่สุดสำหรับสแกนระยะไกลในห้าง (6 คอลัมน์) -->
-                                <div class="md:col-span-6 bg-gradient-to-b from-indigo-950/90 to-slate-950/95 border-2 border-amber-400/70 rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(251,191,36,0.25)] relative">
-                                    <div class="bg-white p-4 sm:p-5 rounded-3xl shadow-[0_0_45px_rgba(255,255,255,0.3)] border-4 border-amber-300">
+                                <!-- กล่องกลาง: QR Code ขนาดใหญ่เด่นชัดที่สุดสำหรับสแกนระยะไกล (6 คอลัมน์) -->
+                                <div class="md:col-span-6 bg-gradient-to-b from-indigo-950/90 to-slate-950/95 border-2 border-amber-400/70 rounded-3xl p-2.5 sm:p-3 flex flex-col items-center justify-center text-center shadow-[0_0_40px_rgba(251,191,36,0.22)] relative">
+                                    <div class="bg-white p-2.5 sm:p-3 rounded-2xl shadow-[0_0_35px_rgba(255,255,255,0.28)] border-4 border-amber-300">
                                         <div id="live-big-qrcode" class="flex items-center justify-center"></div>
                                     </div>
-                                    <div class="mt-3 flex flex-wrap items-center justify-center gap-2.5">
-                                        <span class="text-sm sm:text-base font-black text-amber-300 flex items-center gap-1.5 tracking-wide">
-                                            <i data-lucide="scan-line" class="w-5 h-5"></i> สแกน QR Code เพื่อโหวตสด!
+                                    <div class="mt-2 flex flex-wrap items-center justify-center gap-2">
+                                        <span class="text-xs sm:text-sm font-black text-amber-300 flex items-center gap-1 tracking-wide">
+                                            <i data-lucide="scan-line" class="w-4 h-4"></i> สแกน QR Code เพื่อโหวตสด!
                                         </span>
-                                        <button type="button" onclick="downloadQRCode()" class="text-xs px-3 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition inline-flex items-center gap-1">
-                                            <i data-lucide="download" class="w-3.5 h-3.5"></i> บันทึก QR
+                                        <button type="button" onclick="downloadQRCode()" class="text-[11px] px-2.5 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition inline-flex items-center gap-1">
+                                            <i data-lucide="download" class="w-3 h-3"></i> บันทึก QR
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- กล่องขวา: กล่อง "นับเวลาถอยหลัง" ขนาดใหญ่เต็มความสูง (3 คอลัมน์) -->
-                                <div class="md:col-span-3 bg-slate-950/90 border-2 border-indigo-500/40 rounded-3xl p-4 flex flex-col items-center justify-center text-center shadow-2xl relative overflow-hidden">
+                                <div class="md:col-span-3 bg-slate-950/90 border-2 border-indigo-500/40 rounded-3xl p-3 flex flex-col items-center justify-center text-center shadow-2xl relative overflow-hidden">
                                     <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-                                    <div class="flex items-center justify-center gap-1.5 text-indigo-300 text-sm sm:text-base font-extrabold uppercase tracking-wider mb-1">
-                                        <i data-lucide="timer" class="w-5 h-5"></i>
+                                    <div class="flex items-center justify-center gap-1.5 text-indigo-300 text-xs sm:text-sm font-extrabold uppercase tracking-wider mb-1">
+                                        <i data-lucide="timer" class="w-4 h-4"></i>
                                         <span>นับเวลาถอยหลัง</span>
                                     </div>
-                                    <p id="race-timer-display" class="text-5xl sm:text-6xl font-black font-mono text-white tracking-wider my-2 leading-none">01:00</p>
+                                    <p id="race-timer-display" class="text-4xl sm:text-5xl font-black font-mono text-white tracking-wider my-1 leading-none">01:00</p>
                                 </div>
 
                             </div>
 
                             <!-- 3. ด้านล่าง: พื้นที่กราฟเสาแนวตั้งของ "ทีมที่แข่ง" เรียงเคียงข้างกันเต็มความกว้าง -->
-                            <div id="live-race-container" class="flex-1 w-full min-h-[280px]">
+                            <div id="live-race-container" class="flex-1 w-full min-h-[220px]">
                                 <!-- เสากราฟแนวตั้งของแต่ละทีมจะถูกสร้างตรงนี้ -->
                             </div>
 
@@ -524,73 +524,73 @@
             <!-- แท็บ 3: แท่นเวทีประกาศผลรางวัลอันดับ 1, 2, 3 (Podium Stage) -->
             <!-- ****************************************** -->
             <section id="section-podium" class="hidden flex-1 flex flex-col">
-                <div class="glass-panel rounded-3xl p-6 sm:p-10 flex-1 flex flex-col justify-between relative overflow-hidden text-center">
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/15 blur-[120px] pointer-events-none"></div>
-                    <div class="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-indigo-950/90 to-transparent pointer-events-none"></div>
+                <div class="glass-panel rounded-3xl p-6 sm:p-10 min-h-[calc(100vh-110px)] flex-1 flex flex-col justify-between relative overflow-hidden text-center">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[340px] bg-amber-500/15 blur-[120px] pointer-events-none"></div>
+                    <div class="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-indigo-950/90 to-transparent pointer-events-none"></div>
 
                     <!-- หัวข้อประกาศผล -->
-                    <div class="relative z-10 mb-6">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 mb-3">
+                    <div class="relative z-10 mb-4">
+                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 mb-3">
                             <i data-lucide="sparkles" class="w-4 h-4"></i> OFFICIAL RESULTS • สรุปผลการแข่งขัน
                         </span>
-                        <h2 id="podium-event-title" class="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 tracking-tight">
+                        <h2 id="podium-event-title" class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 tracking-tight">
                             ขอแสดงความยินดีกับผู้ชนะ!
                         </h2>
-                        <p class="text-slate-400 text-sm mt-2">3 อันดับผู้เข้าแข่งขันที่ได้รับคะแนนโหวตสูงสุด</p>
+                        <p class="text-slate-300 text-sm sm:text-base mt-2">3 อันดับผู้เข้าแข่งขันที่ได้รับคะแนนโหวตสูงสุด</p>
                     </div>
 
-                    <!-- เวทีแท่นรับรางวัล 2 - 1 - 3 (แสดงเฉพาะ 3 อันดับแรกเท่านั้น) -->
-                    <div id="podium-stage-container" class="relative z-10 max-w-4xl w-full mx-auto mt-auto pt-8 px-2 sm:px-6">
-                        <div class="grid grid-cols-3 items-end gap-2 sm:gap-6">
+                    <!-- เวทีแท่นรับรางวัล 2 - 1 - 3 (ใหญ่เต็มตาสมดุลที่ซูม 100%) -->
+                    <div id="podium-stage-container" class="relative z-10 max-w-5xl w-full mx-auto my-auto pt-4 px-2 sm:px-6">
+                        <div class="grid grid-cols-3 items-end gap-3 sm:gap-8">
                             
                             <!-- อันดับที่ 2 (ฝั่งซ้าย - ความสูงปานกลาง) -->
                             <div class="flex flex-col items-center justify-end">
-                                <div class="mb-3 text-center animate-float" style="animation-delay: 0.5s;">
-                                    <div id="p2-avatar" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-slate-200 to-slate-400 text-slate-900 font-extrabold text-3xl sm:text-4xl flex items-center justify-center mx-auto mb-2 border-4 border-slate-300 shadow-xl">
+                                <div class="mb-4 text-center animate-float" style="animation-delay: 0.5s;">
+                                    <div id="p2-avatar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-slate-200 to-slate-400 text-slate-900 font-extrabold text-4xl sm:text-5xl flex items-center justify-center mx-auto mb-2.5 border-4 border-slate-300 shadow-xl">
                                         🐰
                                     </div>
-                                    <h3 id="p2-name" class="font-bold text-white text-sm sm:text-xl line-clamp-1 px-1">-</h3>
-                                    <p id="p2-desc" class="text-[11px] sm:text-xs font-medium text-slate-300/90 line-clamp-1 px-1 mb-0.5">-</p>
-                                    <p id="p2-score" class="text-xs sm:text-sm font-bold text-slate-200">0 คะแนน</p>
+                                    <h3 id="p2-name" class="font-extrabold text-white text-base sm:text-2xl leading-snug break-words px-1">-</h3>
+                                    <p id="p2-desc" class="text-xs sm:text-sm font-medium text-slate-300 leading-snug break-words px-1 mt-0.5">-</p>
+                                    <p id="p2-score" class="text-sm sm:text-lg font-extrabold text-slate-200 mt-1">0 คะแนน</p>
                                 </div>
-                                <div class="podium-2 w-full h-44 sm:h-52 rounded-t-3xl bg-gradient-to-b from-slate-300/35 via-slate-400/20 to-slate-800/70 border-t-4 border-slate-300 backdrop-blur-md flex flex-col items-center justify-start pt-4 shadow-2xl">
-                                    <span class="text-4xl sm:text-6xl font-black text-slate-200/95 drop-shadow">2</span>
-                                    <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-300 mt-1">2nd Place</span>
+                                <div class="podium-2 w-full h-48 sm:h-60 rounded-t-3xl bg-gradient-to-b from-slate-300/35 via-slate-400/20 to-slate-800/70 border-t-4 border-slate-300 backdrop-blur-md flex flex-col items-center justify-start pt-5 shadow-2xl">
+                                    <span class="text-5xl sm:text-7xl font-black text-slate-200/95 drop-shadow">2</span>
+                                    <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-300 mt-1">2nd Place</span>
                                 </div>
                             </div>
 
                             <!-- อันดับที่ 1 (ตรงกลาง - สูงที่สุดเด่นชัด) -->
                             <div class="flex flex-col items-center justify-end">
-                                <div class="mb-3 text-center animate-float">
-                                    <div class="text-amber-400 flex justify-center mb-1 drop-shadow-[0_0_15px_rgba(251,191,36,0.8)]">
-                                        <i data-lucide="crown" class="w-9 h-9 sm:w-12 sm:h-12 fill-amber-400"></i>
+                                <div class="mb-4 text-center animate-float">
+                                    <div class="text-amber-400 flex justify-center mb-1.5 drop-shadow-[0_0_15px_rgba(251,191,36,0.8)]">
+                                        <i data-lucide="crown" class="w-10 h-10 sm:w-14 sm:h-14 fill-amber-400"></i>
                                     </div>
-                                    <div id="p1-avatar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-amber-300 via-yellow-500 to-amber-600 text-slate-950 font-black text-4xl sm:text-5xl flex items-center justify-center mx-auto mb-2 border-4 border-amber-200 shadow-[0_0_30px_rgba(245,158,11,0.6)]">
+                                    <div id="p1-avatar" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-amber-300 via-yellow-500 to-amber-600 text-slate-950 font-black text-5xl sm:text-6xl flex items-center justify-center mx-auto mb-2.5 border-4 border-amber-200 shadow-[0_0_35px_rgba(245,158,11,0.65)]">
                                         🦊
                                     </div>
-                                    <h3 id="p1-name" class="font-extrabold text-amber-300 text-base sm:text-2xl line-clamp-1 px-1">-</h3>
-                                    <p id="p1-desc" class="text-xs sm:text-sm font-semibold text-amber-200/90 line-clamp-1 px-1 mb-0.5">-</p>
-                                    <p id="p1-score" class="text-xs sm:text-base font-bold text-white">0 คะแนน</p>
+                                    <h3 id="p1-name" class="font-black text-amber-300 text-lg sm:text-3xl leading-snug break-words px-1">-</h3>
+                                    <p id="p1-desc" class="text-xs sm:text-base font-semibold text-amber-200/90 leading-snug break-words px-1 mt-0.5">-</p>
+                                    <p id="p1-score" class="text-base sm:text-xl font-black text-white mt-1">0 คะแนน</p>
                                 </div>
-                                <div class="podium-1 w-full h-60 sm:h-72 rounded-t-3xl bg-gradient-to-b from-amber-400/45 via-amber-500/25 to-amber-950/80 border-t-4 border-amber-300 backdrop-blur-md flex flex-col items-center justify-start pt-5 shadow-[0_-10px_45px_rgba(245,158,11,0.3)]">
-                                    <span class="text-5xl sm:text-7xl font-black text-amber-300 drop-shadow-lg">1</span>
-                                    <span class="text-[10px] sm:text-xs font-extrabold uppercase tracking-widest text-amber-200 mt-1">Champion</span>
+                                <div class="podium-1 w-full h-64 sm:h-80 rounded-t-3xl bg-gradient-to-b from-amber-400/45 via-amber-500/25 to-amber-950/80 border-t-4 border-amber-300 backdrop-blur-md flex flex-col items-center justify-start pt-6 shadow-[0_-10px_45px_rgba(245,158,11,0.3)]">
+                                    <span class="text-6xl sm:text-8xl font-black text-amber-300 drop-shadow-lg">1</span>
+                                    <span class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-amber-200 mt-1">Champion</span>
                                 </div>
                             </div>
 
                             <!-- อันดับที่ 3 (ฝั่งขวา - ความสูงอันดับ 3) -->
                             <div class="flex flex-col items-center justify-end">
-                                <div class="mb-3 text-center animate-float" style="animation-delay: 1s;">
-                                    <div id="p3-avatar" class="w-14 h-14 sm:w-18 sm:h-18 rounded-full bg-gradient-to-br from-orange-300 to-amber-700 text-white font-extrabold text-2xl sm:text-3xl flex items-center justify-center mx-auto mb-2 border-4 border-orange-300/80 shadow-xl">
+                                <div class="mb-4 text-center animate-float" style="animation-delay: 1s;">
+                                    <div id="p3-avatar" class="w-18 h-18 w-16 h-16 sm:w-22 sm:h-22 rounded-full bg-gradient-to-br from-orange-300 to-amber-700 text-white font-extrabold text-3xl sm:text-4xl flex items-center justify-center mx-auto mb-2.5 border-4 border-orange-300/80 shadow-xl">
                                         🐼
                                     </div>
-                                    <h3 id="p3-name" class="font-bold text-white text-sm sm:text-lg line-clamp-1 px-1">-</h3>
-                                    <p id="p3-desc" class="text-[11px] sm:text-xs font-medium text-orange-200/90 line-clamp-1 px-1 mb-0.5">-</p>
-                                    <p id="p3-score" class="text-xs sm:text-sm font-bold text-orange-100">0 คะแนน</p>
+                                    <h3 id="p3-name" class="font-extrabold text-white text-base sm:text-xl leading-snug break-words px-1">-</h3>
+                                    <p id="p3-desc" class="text-xs sm:text-sm font-medium text-orange-200 leading-snug break-words px-1 mt-0.5">-</p>
+                                    <p id="p3-score" class="text-sm sm:text-lg font-extrabold text-orange-100 mt-1">0 คะแนน</p>
                                 </div>
-                                <div class="podium-3 w-full h-32 sm:h-40 rounded-t-3xl bg-gradient-to-b from-orange-400/35 via-amber-700/20 to-slate-900/70 border-t-4 border-orange-300/80 backdrop-blur-md flex flex-col items-center justify-start pt-3 shadow-2xl">
-                                    <span class="text-3xl sm:text-5xl font-black text-orange-200/95 drop-shadow">3</span>
-                                    <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-orange-200/80 mt-1">3rd Place</span>
+                                <div class="podium-3 w-full h-36 sm:h-48 rounded-t-3xl bg-gradient-to-b from-orange-400/35 via-amber-700/20 to-slate-900/70 border-t-4 border-orange-300/80 backdrop-blur-md flex flex-col items-center justify-start pt-4 shadow-2xl">
+                                    <span class="text-4xl sm:text-6xl font-black text-orange-200/95 drop-shadow">3</span>
+                                    <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-orange-200/80 mt-1">3rd Place</span>
                                 </div>
                             </div>
 
@@ -895,14 +895,14 @@
                 });
             }
 
-            // 2. QR Code ขนาดใหญ่ยักษ์ตรงกลางห้องแข่งขันสด (260x260px + CorrectLevel.M เพื่อให้จุดตารางใหญ่สแกนระยะไกลติดง่าย)
+            // 2. QR Code ขนาดใหญ่ยักษ์ตรงกลางห้องแข่งขันสด (190x190px + CorrectLevel.M เพื่อให้พอดีจอ 100% และสแกนระยะไกลติดง่าย)
             const liveQrEl = document.getElementById('live-big-qrcode');
             if (liveQrEl) {
                 liveQrEl.innerHTML = '';
                 new QRCode(liveQrEl, {
                     text: voterUrl,
-                    width: 260,
-                    height: 260,
+                    width: 190,
+                    height: 190,
                     colorDark: '#000000',
                     colorLight: '#ffffff',
                     correctLevel: QRCode.CorrectLevel.M
@@ -1235,11 +1235,11 @@
             });
 
             const maxVotes = Math.max(...appState.candidates.map(c => c.votes || 0), 1);
-            const isRacing = appState.status === 'racing';
             const teamCount = appState.candidates.length;
+            const isRacing = appState.status === 'racing';
 
-            // จัดตารางคอลัมน์แนวตั้งเรียงเคียงข้างกันเต็มความกว้างหน้าจอ (รองรับ 4-10+ ทีมในหน้าจอเดียว)
-            container.className = 'flex-1 my-1 w-full grid gap-2 sm:gap-4 items-end';
+            // จัดตารางคอลัมน์แนวตั้งเรียงเคียงข้างกันเต็มความกว้างหน้าจอ (รองรับ 4-12+ ทีมในหน้าจอเดียวที่ซูม 100%)
+            container.className = `flex-1 w-full grid ${teamCount >= 9 ? 'gap-1 sm:gap-1.5' : 'gap-2 sm:gap-3'} items-end min-h-0`;
             container.style.gridTemplateColumns = `repeat(${Math.max(teamCount, 1)}, minmax(0, 1fr))`;
             container.innerHTML = '';
 
@@ -1247,60 +1247,60 @@
                 const votes = c.votes || 0;
                 const rankIdx = rankMap[c.id] ?? idx;
                 const isBoosted = boostedCandidateId === c.id;
+                const isCrowded = teamCount >= 9;
 
-                // คำนวณความสูงของเสา (ตั้งแต่ 6% ถึง 74% ของช่อง เพื่อให้เห็นทุกทีมเด้งพุ่งขึ้นชัดเจนและเหลือพื้นที่ป้ายคะแนนด้านบน)
-                const heightPercent = votes > 0 ? Math.min(Math.max((votes / maxVotes) * 72, 12), 72) : 6;
+                // คำนวณความสูงของเสา (ตั้งแต่ 6% ถึง 68% ของช่อง เพื่อให้เหลือพื้นที่ป้ายคะแนนและตัวละครด้านบนครบในซูม 100%)
+                const heightPercent = votes > 0 ? Math.min(Math.max((votes / maxVotes) * 68, 12), 68) : 6;
 
-                let rankBadge = `<span class="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-bold text-[11px]">#${rankIdx + 1}</span>`;
+                let rankBadge = `<span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 font-bold text-[10px]">#${rankIdx + 1}</span>`;
                 if (rankIdx === 0 && votes > 0) {
-                    rankBadge = `<span class="px-2 py-0.5 rounded-md bg-gradient-to-r from-amber-300 to-amber-500 text-slate-950 font-black text-[11px] shadow-md shadow-amber-500/40">🥇 อันดับ 1</span>`;
+                    rankBadge = `<span class="px-1.5 py-0.5 rounded bg-gradient-to-r from-amber-300 to-amber-500 text-slate-950 font-black text-[10px] shadow-md shadow-amber-500/40">🥇 #1</span>`;
                 } else if (rankIdx === 1 && votes > 0) {
-                    rankBadge = `<span class="px-2 py-0.5 rounded-md bg-gradient-to-r from-slate-200 to-slate-400 text-slate-950 font-black text-[11px]">🥈 อันดับ 2</span>`;
+                    rankBadge = `<span class="px-1.5 py-0.5 rounded bg-gradient-to-r from-slate-200 to-slate-400 text-slate-950 font-black text-[10px]">🥈 #2</span>`;
                 } else if (rankIdx === 2 && votes > 0) {
-                    rankBadge = `<span class="px-2 py-0.5 rounded-md bg-gradient-to-r from-orange-300 to-amber-700 text-white font-black text-[11px]">🥉 อันดับ 3</span>`;
+                    rankBadge = `<span class="px-1.5 py-0.5 rounded bg-gradient-to-r from-orange-300 to-amber-700 text-white font-black text-[10px]">🥉 #3</span>`;
                 }
 
                 const col = document.createElement('div');
                 col.className = 'flex flex-col items-center w-full h-full min-w-0';
                 col.innerHTML = `
                     <!-- ช่องลู่วิ่งเสาแนวตั้ง (พุ่งจากล่างขึ้นบน) -->
-                    <div class="relative w-full flex-1 min-h-[250px] sm:min-h-[290px] vertical-lane-bg rounded-2xl sm:rounded-3xl border ${isBoosted ? 'border-emerald-400 shadow-[0_0_25px_rgba(52,211,153,0.4)]' : (rankIdx === 0 && votes > 0 ? 'border-amber-400/50 shadow-[0_0_30px_rgba(251,191,36,0.15)]' : 'border-white/10')} flex flex-col justify-end items-center p-1.5 sm:p-2.5 overflow-hidden transition-colors duration-300">
+                    <div class="relative w-full flex-1 min-h-[160px] vertical-lane-bg rounded-xl sm:rounded-2xl border ${isBoosted ? 'border-emerald-400 shadow-[0_0_25px_rgba(52,211,153,0.4)]' : (rankIdx === 0 && votes > 0 ? 'border-amber-400/50 shadow-[0_0_30px_rgba(251,191,36,0.15)]' : 'border-white/10')} flex flex-col justify-end items-center p-1 overflow-hidden transition-colors duration-300">
                         
                         <!-- เส้นเส้นชัยด้านบนสุด -->
-                        <div class="absolute top-0 inset-x-0 h-2.5 finish-line-pattern opacity-80 border-b-2 border-amber-400/70"></div>
+                        <div class="absolute top-0 inset-x-0 h-2 finish-line-pattern opacity-80 border-b border-amber-400/70"></div>
 
                         <!-- ตัวเสากราฟพุ่งขึ้นจากด้านล่าง -->
-                        <div class="vertical-race-bar relative w-11 sm:w-16 md:w-20 rounded-t-xl sm:rounded-t-2xl bg-gradient-to-t ${c.color || BAR_COLORS[idx % BAR_COLORS.length]} shadow-xl ${isBoosted ? 'pillar-boost' : ''}" style="height: ${heightPercent}%">
+                        <div class="vertical-race-bar relative ${isCrowded ? 'w-7 sm:w-9 md:w-11' : 'w-10 sm:w-14 md:w-16'} rounded-t-lg sm:rounded-t-xl bg-gradient-to-t ${c.color || BAR_COLORS[idx % BAR_COLORS.length]} shadow-xl ${isBoosted ? 'pillar-boost' : ''}" style="height: ${heightPercent}%">
                             
                             <!-- ส่วนหัวของเสา: ป้ายคะแนน + ตัวละครมาสคอต + เอฟเฟกต์ +1 -->
-                            <div class="absolute -top-20 sm:-top-22 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none">
-                                ${isBoosted ? '<div class="plus-one-popup px-2.5 py-0.5 rounded-full bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm shadow-lg whitespace-nowrap">+1 ⚡ พุ่งขึ้น!</div>' : ''}
+                            <div class="absolute -top-16 sm:-top-18 left-1/2 -translate-x-1/2 flex flex-col items-center z-20 pointer-events-none">
+                                ${isBoosted ? '<div class="plus-one-popup px-2 py-0.5 rounded-full bg-emerald-400 text-slate-950 font-black text-[11px] shadow-lg whitespace-nowrap">+1 ⚡</div>' : ''}
                                 
                                 <!-- ป้ายคะแนนลอยเด่นเหนือตัวละคร -->
-                                <div class="mb-1 px-2 py-0.5 rounded-full ${isBoosted ? 'bg-emerald-500 text-slate-950 border-white scale-110' : 'bg-slate-950/95 text-amber-300 border-amber-400/60'} border shadow-lg whitespace-nowrap transition-transform">
-                                    <span class="text-xs sm:text-sm font-black">${votes.toLocaleString()}</span>
-                                    <span class="text-[9px] sm:text-[10px] opacity-85 ml-0.5">คะแนน</span>
+                                <div class="mb-0.5 px-1.5 py-0.5 rounded-full ${isBoosted ? 'bg-emerald-500 text-slate-950 border-white scale-110' : 'bg-slate-950/95 text-amber-300 border-amber-400/60'} border shadow-lg whitespace-nowrap transition-transform leading-none">
+                                    <span class="text-[11px] sm:text-xs font-black">${votes.toLocaleString()}</span>
                                 </div>
 
                                 <!-- ตัวละครมาสคอตขี่บนยอดเสา -->
                                 <div class="relative">
-                                    ${rankIdx === 0 && votes > 0 ? '<span class="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs sm:text-sm drop-shadow">👑</span>' : ''}
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-slate-900/95 border-2 ${isBoosted ? 'border-emerald-400' : (rankIdx === 0 && votes > 0 ? 'border-amber-300' : 'border-white/40')} shadow-2xl flex items-center justify-center text-xl sm:text-2xl select-none">
+                                    ${rankIdx === 0 && votes > 0 ? '<span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[11px] drop-shadow">👑</span>' : ''}
+                                    <div class="${isCrowded ? 'w-8 h-8 sm:w-9 sm:h-9 text-base sm:text-lg' : 'w-9 h-9 sm:w-11 sm:h-11 text-lg sm:text-xl'} rounded-xl bg-slate-900/95 border-2 ${isBoosted ? 'border-emerald-400' : (rankIdx === 0 && votes > 0 ? 'border-amber-300' : 'border-white/40')} shadow-xl flex items-center justify-center select-none">
                                         <span class="${isRacing ? 'animate-run' : 'animate-idle'}">${c.avatar || '🦊'}</span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- เส้นแสงเงาด้านข้างเสา -->
-                            <div class="absolute inset-y-0 left-1 w-1.5 bg-white/25 rounded-full"></div>
+                            <div class="absolute inset-y-0 left-1 w-1 bg-white/25 rounded-full"></div>
                         </div>
                     </div>
 
                     <!-- ป้ายชื่อทีมและอันดับด้านล่างเสา -->
-                    <div class="mt-2 w-full bg-slate-950/85 border ${isBoosted ? 'border-emerald-400/70' : 'border-white/10'} rounded-xl sm:rounded-2xl p-2 text-center shadow-lg transition-colors">
-                        <div class="mb-1 flex justify-center">${rankBadge}</div>
-                        <h4 class="font-extrabold text-white text-xs sm:text-sm truncate" title="${escapeHtml(c.name)}">${escapeHtml(c.name)}</h4>
-                        ${c.desc ? `<p class="text-[10px] sm:text-[11px] text-slate-400 truncate mt-0.5" title="${escapeHtml(c.desc)}">${escapeHtml(c.desc)}</p>` : ''}
+                    <div class="mt-1.5 w-full bg-slate-950/85 border ${isBoosted ? 'border-emerald-400/70' : 'border-white/10'} rounded-xl p-1.5 text-center shadow-lg transition-colors shrink-0">
+                        <div class="mb-0.5 flex justify-center">${rankBadge}</div>
+                        <h4 class="font-extrabold text-white ${isCrowded ? 'text-[10px] sm:text-[11px]' : 'text-xs sm:text-sm'} leading-tight truncate" title="${escapeHtml(c.name)}">${escapeHtml(c.name)}</h4>
+                        ${c.desc ? `<p class="text-[9px] text-slate-400 leading-tight truncate mt-0.5" title="${escapeHtml(c.desc)}">${escapeHtml(c.desc)}</p>` : ''}
                     </div>
                 `;
                 container.appendChild(col);
@@ -1315,7 +1315,14 @@
             const countEl = document.getElementById('roster-team-count');
             if (!rosterEl) return;
 
-            if (countEl) countEl.textContent = `${appState.candidates.length} ทีม`;
+            const teamCount = appState.candidates.length;
+            if (countEl) countEl.textContent = `${teamCount} ทีม`;
+
+            // หากมี 7 ทีมขึ้นไป จัดเรียงรายชื่อเป็น 2 คอลัมน์อัตโนมัติ เพื่อให้เห็นครบทั้ง 12 ทีมโดยไม่ต้องเลื่อนจอที่ซูม 100%
+            const useTwoCols = teamCount >= 7;
+            rosterEl.className = useTwoCols
+                ? 'flex-1 overflow-y-auto grid grid-cols-1 xl:grid-cols-2 gap-1.5 pr-0.5 content-start'
+                : 'flex-1 overflow-y-auto space-y-2 pr-0.5';
             rosterEl.innerHTML = '';
 
             appState.candidates.forEach((c, idx) => {
@@ -1323,35 +1330,35 @@
                 const rankIdx = rankMap[c.id] ?? idx;
                 const isBoosted = boostedCandidateId === c.id;
 
-                let rankTag = `<span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300">#${rankIdx + 1}</span>`;
+                let rankTag = `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">#${rankIdx + 1}</span>`;
                 if (rankIdx === 0 && votes > 0) {
-                    rankTag = `<span class="text-[11px] font-black px-2 py-0.5 rounded-md bg-amber-400 text-slate-950">🥇 #1</span>`;
+                    rankTag = `<span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-slate-950">🥇 #1</span>`;
                 } else if (rankIdx === 1 && votes > 0) {
-                    rankTag = `<span class="text-[11px] font-black px-2 py-0.5 rounded-md bg-slate-300 text-slate-950">🥈 #2</span>`;
+                    rankTag = `<span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-slate-300 text-slate-950">🥈 #2</span>`;
                 } else if (rankIdx === 2 && votes > 0) {
-                    rankTag = `<span class="text-[11px] font-black px-2 py-0.5 rounded-md bg-orange-300 text-slate-950">🥉 #3</span>`;
+                    rankTag = `<span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-orange-300 text-slate-950">🥉 #3</span>`;
                 }
 
                 const card = document.createElement('div');
-                card.className = `p-3 rounded-2xl border transition-all flex items-start gap-3 ${
+                card.className = `${useTwoCols ? 'p-2 gap-2' : 'p-2.5 gap-2.5'} rounded-xl border transition-all flex items-start ${
                     isBoosted
-                        ? 'bg-emerald-500/20 border-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.3)] scale-[1.01]'
+                        ? 'bg-emerald-500/20 border-emerald-400 shadow-[0_0_16px_rgba(52,211,153,0.3)]'
                         : (rankIdx === 0 && votes > 0
                             ? 'bg-amber-500/10 border-amber-400/40'
                             : 'bg-slate-900/85 border-slate-800')
                 }`;
 
                 card.innerHTML = `
-                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br ${c.color || BAR_COLORS[idx % BAR_COLORS.length]} flex items-center justify-center text-2xl shrink-0 shadow-md">
+                    <div class="${useTwoCols ? 'w-8 h-8 text-lg rounded-lg' : 'w-10 h-10 text-xl rounded-xl'} bg-gradient-to-br ${c.color || BAR_COLORS[idx % BAR_COLORS.length]} flex items-center justify-center shrink-0 shadow">
                         ${c.avatar || '🦊'}
                     </div>
                     <div class="min-w-0 flex-1">
-                        <div class="flex items-center justify-between gap-1.5 mb-0.5">
+                        <div class="flex items-center justify-between gap-1 mb-0.5">
                             ${rankTag}
-                            <span class="text-xs font-extrabold ${isBoosted ? 'text-emerald-300' : 'text-amber-300'}">${votes.toLocaleString()} คะแนน</span>
+                            <span class="text-[11px] font-extrabold ${isBoosted ? 'text-emerald-300' : 'text-amber-300'}">${votes.toLocaleString()}</span>
                         </div>
-                        <h4 class="font-extrabold text-white text-sm sm:text-base leading-snug break-words">${escapeHtml(c.name)}</h4>
-                        ${c.desc ? `<p class="text-xs text-slate-300/90 leading-snug break-words mt-0.5">${escapeHtml(c.desc)}</p>` : ''}
+                        <h4 class="font-extrabold text-white ${useTwoCols ? 'text-xs' : 'text-sm'} leading-tight break-words">${escapeHtml(c.name)}</h4>
+                        ${c.desc ? `<p class="text-[10px] text-slate-300/85 leading-tight break-words mt-0.5">${escapeHtml(c.desc)}</p>` : ''}
                     </div>
                 `;
                 rosterEl.appendChild(card);
